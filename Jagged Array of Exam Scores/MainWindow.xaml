@@ -1,0 +1,70 @@
+﻿<Window x:Class="Jagged_Array_of_Exam_Scores.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Jagged_Array_of_Exam_Scores"
+        mc:Ignorable="d"
+        Title="Jagged Array of Exam Scores" Height="600" Width="800" ResizeMode="NoResize" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Margin="10, 0, 10, 0" Content="The list box below shows the exam scores in each section. The order is from left to right in chronological order (starting at section 1)."/>
+        <ListBox Grid.Column="3" Grid.Row="1" Margin="10" Grid.RowSpan="11" ItemsSource="{Binding DataModels}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Content="{Binding Section1Score}"/>
+                        <Label Grid.Column="1" Content="{Binding Section2Score}"/>
+                        <Label Grid.Column="2" Content="{Binding Section3Score}"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Label Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Margin="10, 0, 10, 0" Content="Average Exam Score (Per Section)" FontSize="20"/>
+        <Label Grid.Column="0" Grid.Row="2" Content="Section 1" Margin="10, 0, 10, 0" VerticalAlignment="Bottom" FontSize="15"/>
+        <Label Grid.Column="1" Grid.Row="2" Content="Section 2" Margin="10, 0, 10, 0" VerticalAlignment="Bottom" FontSize="15"/>
+        <Label Grid.Column="2" Grid.Row="2" Content="Section 3" Margin="10, 0, 10, 0" VerticalAlignment="Bottom" FontSize="15"/>
+        <Label Grid.Column="0" Grid.Row="3" Margin="10, 0, 10, 0" Content="{Binding AverageExamScorePerSection1}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="15"/>
+        <Label Grid.Column="1" Grid.Row="3" Margin="10, 0, 10, 0" Content="{Binding AverageExamScorePerSection2}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="15"/>
+        <Label Grid.Column="2" Grid.Row="3" Margin="10, 0, 10, 0" Content="{Binding AverageExamScorePerSection3}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="15"/>
+        <Label Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="3" Margin="10, 0, 10, 0" Content="Average Exam Score (Overall)" FontSize="20"/>
+        <Label Grid.Column="0" Grid.Row="5" Margin="10, 0, 10, 0" Content="{Binding AverageExamScoreOverallResult}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="15"/>
+        <Label Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="3" Margin="10, 0, 10, 0" Content="Highest Exam Score" FontSize="20"/>
+        <Label Grid.Column="0" Grid.Row="7" Content="Score" Margin="10, 0, 10, 0" VerticalAlignment="Bottom" FontSize="15"/>
+        <Label Grid.Column="1" Grid.Row="7" Content="Section" Margin="10, 0, 10, 0" VerticalAlignment="Bottom" FontSize="15"/>
+        <Label Grid.Column="0" Grid.Row="8" Margin="10, 0, 10, 0" Content="{Binding HighestExamScoreOverall}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="15"/>
+        <Label Grid.Column="1" Grid.Row="8" Margin="10, 0, 10, 0" Content="{Binding HighestExamScoreSection}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="15"/>
+        <Label Grid.Column="0" Grid.Row="9" Grid.ColumnSpan="3" Margin="10, 0, 10, 0" Content="Lowest Exam Score" FontSize="20"/>
+        <Label Grid.Column="0" Grid.Row="10" Content="Score" Margin="10, 0, 10, 0" VerticalAlignment="Bottom" FontSize="15"/>
+        <Label Grid.Column="1" Grid.Row="10" Content="Section" Margin="10, 0, 10, 0" VerticalAlignment="Bottom" FontSize="15"/>
+        <Label Grid.Column="0" Grid.Row="11" Margin="10, 0, 10, 0" Content="{Binding LowestExamScoreOverall}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="15"/>
+        <Label Grid.Column="1" Grid.Row="11" Margin="10, 0, 10, 0" Content="{Binding LowestExamScoreSection}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="15"/>
+        <Label Name="lblError" Grid.Column="0" Grid.Row="12" Grid.ColumnSpan="3" Margin="10, 0, 10, 0" Content="Please double check the following:&#x0a;- The exam scores are valid&#x0a;- The exam scores don't have whitespaces in between them&#x0a;- The files exist and named properly (i.e. Section1.txt, Section2.txt, etc.)" FontSize="10" Foreground="Red"/>
+        <Button Grid.Column="3" Grid.Row="12" Content="Refresh" Margin="10" Click="Refresh_Click" MinWidth="300" MaxHeight="50" HorizontalAlignment="Right"/>
+    </Grid>
+</Window>
