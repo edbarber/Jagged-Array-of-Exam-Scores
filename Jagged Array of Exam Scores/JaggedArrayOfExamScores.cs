@@ -25,6 +25,7 @@ namespace Jagged_Array_of_Exam_Scores
         const string LEVEL_2_FILE_PATH = "..\\..\\Exam Scores\\Section2.txt";
         const string LEVEL_3_FILE_PATH = "..\\..\\Exam Scores\\Section3.txt";
         const int DECIMAL_PLACES = 1;
+        const int MIN_ARRAY_LENGTH = 0;
 
         private List<DataModel> dataModels;
         private decimal[][] examScores;
@@ -96,7 +97,7 @@ namespace Jagged_Array_of_Exam_Scores
         public void RefreshExamScores()
         {
             List<DataModel> dms = new List<DataModel>();
-            int greatestInnerArrayLength = 0;
+            int greatestInnerArrayLength = MIN_ARRAY_LENGTH;
 
             for (int i = MIN_STARTING_INDEX; i < MAX_SECTIONS; i++)
             {
